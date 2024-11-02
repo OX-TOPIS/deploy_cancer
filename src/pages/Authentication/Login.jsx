@@ -58,7 +58,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/login34', userData)
+      const response = await axios.post('http://3.107.2.16:8080/login34', userData)
       if (response.status === 200){
         localStorage.setItem('userName', userName);
         localStorage.setItem('HN', response.data.HN);

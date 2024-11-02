@@ -54,7 +54,7 @@ const Effects =  () => {
 useEffect(() => {
   const fetchHistory = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/selectedFeedback2/${appointId}`);
+      const response = await fetch(`http://3.107.2.16:8080/selectedFeedback2/${appointId}`);
       if (response.ok) {
         const data = await response.json(); // แปลง response เป็น JSON
         setHistory(data); // ใช้ข้อมูลที่แปลงแล้ว

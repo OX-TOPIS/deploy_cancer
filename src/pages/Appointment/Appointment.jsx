@@ -25,7 +25,7 @@ const Appointment = () => {
 
   useEffect(() => {
     if (username) {
-      fetch(`http://localhost:8080/PatientAppointment2/${username}`)
+      fetch(`http://3.107.2.16:8080/PatientAppointment2/${username}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');

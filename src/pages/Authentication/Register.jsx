@@ -39,7 +39,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/register2', userData)
+      const response = await axios.post('http://3.107.2.16:8080/register2', userData)
 
       if (response.status === 200){
         alert("reg success");

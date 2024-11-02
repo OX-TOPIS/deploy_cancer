@@ -35,7 +35,7 @@ const FillResults = () => {
     setMsg("กำลังส่งผลเลือด...");
     setProgress({ started: true, pc: 0 });
 
-    axios.post('http://localhost:8080/uploadBloodResult', fd, {
+    axios.post('http://3.107.2.16:8080/uploadBloodResult', fd, {
       onUploadProgress: (progressEvent) => {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
         setProgress({ started: true, pc: percentCompleted });
