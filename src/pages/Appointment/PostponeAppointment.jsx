@@ -47,7 +47,7 @@ const PostponeAppointment = () => {
 
   useEffect(() => {
     if (username) {
-      fetch(`http://3.107.2.16:8080/PatientAppointment2/${username}/${appointId}`)
+      fetch(`https://deploy-nodejs-37ek.onrender.com/PatientAppointment2/${username}/${appointId}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -78,7 +78,7 @@ const PostponeAppointment = () => {
     const fetchUserIdLine = async () => {
       console.log(username)
       try {
-        const response = await axios.get(`http://3.107.2.16:8080/useridline/${username}`);
+        const response = await axios.get(`https://deploy-nodejs-37ek.onrender.com/useridline/${username}`);
         console.log(response.data[0].UserIdLine);
         if (response.data) {
           setUserIdLine(response.data[0].UserIdLine);
@@ -110,7 +110,7 @@ const PostponeAppointment = () => {
   }
 
   const handleSubmit = () => {
-    fetch(`http://3.107.2.16:8080/PatientPostpone/${appointId}/${userIdLine}`, {
+    fetch(`https://deploy-nodejs-37ek.onrender.com/PatientPostpone/${appointId}/${userIdLine}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
