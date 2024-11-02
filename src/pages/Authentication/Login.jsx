@@ -5,6 +5,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Input, Button, Checkbox, Form, Typography } from 'antd';
 import liff from '@line/liff';
 import Cookies from 'js-cookie';
+import { AxiosClient } from '../../apiClient';
 
 const onFinish = (values) => {
   console.log('Success:', values);
@@ -58,7 +59,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://3.107.2.16:8080/login34', userData)
+      const response = await AxiosClient.post('/login34', userData)
       if (response.status === 200){
         localStorage.setItem('userName', userName);
         localStorage.setItem('HN', response.data.HN);
