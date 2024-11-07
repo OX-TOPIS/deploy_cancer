@@ -43,7 +43,6 @@ const PostponeAppointment = () => {
     if (user) {
       setUsername(user);
     }
-    console.log(user, "Test user")
   }, []);
 
   useEffect(() => {
@@ -77,15 +76,16 @@ const PostponeAppointment = () => {
    // LINE fetchUserIdLine
   useEffect(() => {
     const fetchUserIdLine = async () => {
-      console.log(username)
-      try {
-        const response = await axios.get(`https://deploy-nodejs-37ek.onrender.com/useridline/${username}`);
-        console.log(response.data[0].UserIdLine);
-        if (response.data) {
-          setUserIdLine(response.data[0].UserIdLine);
+      if(username){
+        try {
+          const response = await axios.get(`https://deploy-nodejs-37ek.onrender.com/useridline/${username}`);
+          console.log(response.data[0].UserIdLine);
+          if (response.data) {
+            setUserIdLine(response.data[0].UserIdLine);
+          }
+        } catch (error) {
+          console.error("Error fetching UserIdLine:", error);
         }
-      } catch (error) {
-        console.error("Error fetching UserIdLine:", error);
       }
     };
     fetchUserIdLine();
