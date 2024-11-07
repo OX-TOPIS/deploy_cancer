@@ -76,16 +76,15 @@ const PostponeAppointment = () => {
    // LINE fetchUserIdLine
   useEffect(() => {
     const fetchUserIdLine = async () => {
-      if(username){
-        try {
-          const response = await axios.get(`https://deploy-nodejs-37ek.onrender.com/useridline/${username}`);
-          console.log(response.data[0].UserIdLine);
-          if (response.data) {
-            setUserIdLine(response.data[0].UserIdLine);
-          }
-        } catch (error) {
-          console.error("Error fetching UserIdLine:", error);
+      console.log(username)
+      try {
+        const response = await axios.get(`https://deploy-nodejs-37ek.onrender.com/useridline/${username}`);
+        console.log(response.data[0].UserIdLine);
+        if (response.data) {
+          setUserIdLine(response.data[0].UserIdLine);
         }
+      } catch (error) {
+        console.error("Error fetching UserIdLine:", error);
       }
     };
     fetchUserIdLine();
@@ -110,28 +109,21 @@ const PostponeAppointment = () => {
     return result;
   }
 
-  const handleSubmit = () => {
-    fetch(`https://deploy-nodejs-37ek.onrender.com/PatientPostpone/${appointId}/${userIdLine}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        newAppointDate,
-        reason,
-        email,
-        requestPhone,
-      }),
+  const handleSubmit = async () => {
+    await axios.post(`https://deploy-nodejs-37ek.onrender.com/PatientPostpone/${appointId}/${userIdLine}`, {
+      newAppointDate,
+      reason,
+      email,
+      requestPhone,
     })
-      .then(response => response.text())
-      .then(data => {
-        console.log(data);
-        // navigate('/Appointment/AppointmentDetails');
-        navigate(`/Appointment/AppointmentDetails?appointId=${appointId}`);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+    .then(response => {
+      console.log(response.data);
+      // navigate('/Appointment/AppointmentDetails');
+      navigate(`/Appointment/AppointmentDetails?appointId=${appointId}`);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   };
   
   return (
