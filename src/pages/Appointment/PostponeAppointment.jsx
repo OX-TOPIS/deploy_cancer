@@ -43,6 +43,7 @@ const PostponeAppointment = () => {
     if (user) {
       setUsername(user);
     }
+    console.log(user, "Test user")
   }, []);
 
   useEffect(() => {
