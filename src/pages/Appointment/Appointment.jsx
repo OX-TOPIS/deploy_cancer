@@ -87,7 +87,7 @@ const Appointment = () => {
             <h2>นัดหมายที่ผ่านมาแล้ว</h2>
             {pastAppointments.map((appointment) => (
               <div key={appointment.appointId} className="pt-2">
-                <Link to={`/Appointment/PostponeAppointment/${appointment.appointId}`} className="box-sd gap-2">
+                <div className="box-sd gap-2">
                   <div className="text-center text-black shadow-sm w-18">
                     <p className='text-sm'>นัดหมายที่</p>
                     <h2 className='text-5xl'>{appointment.appoint_no}</h2>
@@ -107,7 +107,7 @@ const Appointment = () => {
                       })}
                     </h3>
                   </button>
-                </Link>
+                </div>
               </div>
             ))}
           </div>
